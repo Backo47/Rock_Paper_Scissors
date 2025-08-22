@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
+
                 <ImageButton
                     android:id="@+id/rock_button_two"
                     android:layout_width="80dp"
@@ -68,6 +70,7 @@
                     android:contentDescription="@string/kamen_desc"
                     android:src="@drawable/rock"
                     android:layout_marginBottom="16dp" />
+
                 <ImageButton
                     android:id="@+id/paper_button_two"
                     android:layout_width="80dp"
@@ -78,6 +81,7 @@
                     android:contentDescription="@string/papir_desc"
                     android:src="@drawable/paper"
                     android:layout_marginBottom="16dp" />
+
                 <ImageButton
                     android:id="@+id/scissors_button_two"
                     android:layout_width="80dp"
@@ -114,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginBottom="4dp" />
+
             <ImageView
                 android:id="@+id/player1_icon"
                 android:layout_width="80dp"
@@ -129,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:layout_marginBottom="4dp" />
+
             <ImageView
                 android:id="@+id/player2_icon"
                 android:layout_width="80dp"
@@ -150,7 +156,7 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:contentDescription="@string/repeat_desc"
-        android:tint="@null"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:tint="@null" />
 
 </LinearLayout>
