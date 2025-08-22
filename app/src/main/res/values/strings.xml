@@ -8,4 +8,9 @@
     <string name="kamen_desc">Ikona kamene</string>
     <string name="papir_desc">Ikona papíru</string>
     <string name="nuzky_desc">Ikona nůžek</string>
+
+    <!-- Content description for computer's choice icon -->
+    <string name="computer_choice_icon_desc">Ikona volby telefonu</string>
+    <!-- Content description for repeat button -->
+    <string name="repeat_desc">Opakovat hru</string>
 </resources>

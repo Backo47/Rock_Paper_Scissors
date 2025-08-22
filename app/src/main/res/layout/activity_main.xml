@@ -32,6 +32,7 @@
         android:paddingBottom="16dp" />
 
     <!-- Icons instead of text buttons -->
+    <!-- Player choice icons -->
     <ImageButton
         android:id="@+id/rock_button"
         android:layout_width="80dp"
@@ -63,4 +64,27 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:contentDescription="@string/nuzky_desc" />
+
+    <!-- Computer choice icon, hidden until a round is played -->
+    <ImageView
+        android:id="@+id/computer_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:contentDescription="@string/computer_choice_icon_desc" />
+
+    <!-- Repeat button shown after round completion -->
+    <ImageButton
+        android:id="@+id/repeat_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:src="@drawable/replay"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@null"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/repeat_desc" />
 </LinearLayout>
