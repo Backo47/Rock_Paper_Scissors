@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Kameň Papier Nožnice</string>
-    <string name="vyberte_k_men_n_ky_nebo_pap_r">Vyberte kameň, nožnice alebo papier</string>
+    <string name="vyberte_k_men_n_ky_nebo_pap_r">Vyberte symbol</string>
     <string name="k_men">Kameň</string>
     <string name="pap_r">Papier</string>
     <string name="n_ky">Nožnice</string>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Rock Paper Scissors</string>
-    <string name="vyberte_k_men_n_ky_nebo_pap_r">Choose rock, paper or scissors</string>
+    <string name="vyberte_k_men_n_ky_nebo_pap_r">Choose a symbol</string>
     <string name="k_men">Rock</string>
     <string name="pap_r">Paper</string>
     <string name="n_ky">Scissors</string>

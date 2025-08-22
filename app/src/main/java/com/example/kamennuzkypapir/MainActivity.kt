@@ -12,7 +12,6 @@ import android.widget.TextView
 import kotlin.random.Random
 import java.util.Locale
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private lateinit var resultTextView: TextView
     private lateinit var computerLabel: TextView
@@ -129,7 +128,7 @@ class MainActivity : AppCompatActivity() {
         Locale.setDefault(locale)
         val config = resources.configuration
         config.setLocale(locale)
-        resources.updateConfiguration(/* config = */ config, /* metrics = */ resources.displayMetrics)
+        resources.updateConfiguration(config, resources.displayMetrics)
         // Recreate activity to apply changes
         recreate()
     }

@@ -3,6 +3,6 @@
     <!-- Menu item for selecting language. The title will be updated programmatically to reflect the current language code. -->
     <item
         android:id="@+id/menu_language"
-        android:title="@string/cs"
+        android:title="CS"
         app:showAsAction="always" />
 </menu>
