@@ -12,15 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KamenNuzkyPapir">
 
-        <!-- Deklarace hlavní aktivity, která se spustí při startu aplikace -->
+        <!-- Start screen allowing user to choose between single and two player modes. -->
         <activity
-            android:name=".MainActivity"
+            android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Single‑player game against the phone -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <!-- Two‑player game on one device -->
+        <activity
+            android:name=".TwoPlayerActivity"
+            android:exported="true" />
 
     </application>
 

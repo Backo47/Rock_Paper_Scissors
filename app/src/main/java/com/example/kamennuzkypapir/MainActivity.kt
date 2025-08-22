@@ -164,16 +164,22 @@ class MainActivity : AppCompatActivity() {
         }
         computerIcon.visibility = View.VISIBLE
 
-        // Determine winner and display result
-        val result = determineWinner(userChoice, computerChoice)
-        resultTextView.text = result
-
-        // Update scores based on result
-        when (result) {
-            "Vyhrál jsi!" -> playerScore++
-            "Prohrál jsi!" -> computerScore++
-            // Remíza does not change scores
+        // Determine winner and update scores. Compare internal constants
+        val resultMessageId: Int = if (userChoice == computerChoice) {
+            R.string.draw_message
+        } else if (
+            (userChoice == ROCK && computerChoice == SCISSORS) ||
+            (userChoice == PAPER && computerChoice == ROCK) ||
+            (userChoice == SCISSORS && computerChoice == PAPER)
+        ) {
+            playerScore++
+            R.string.win_message
+        } else {
+            computerScore++
+            R.string.lose_message
         }
+        // Set localized result message and update scoreboard
+        resultTextView.text = getString(resultMessageId)
         updateScoreText()
 
         // Show the repeat button to allow starting a new round

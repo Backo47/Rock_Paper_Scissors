@@ -28,6 +28,18 @@
     <string name="lose_message">Prohrál jsi!</string>
     <string name="draw_message">Remíza!</string>
 
+    <!-- Start screen and two‑player mode strings -->
+    <string name="select_game_mode">Zvolte režim hry</string>
+    <string name="single_player_game">Hra pro jednoho</string>
+    <string name="two_player_game">Hra pro dva</string>
+    <string name="player1_label">Hráč 1</string>
+    <string name="player2_label">Hráč 2</string>
+    <!-- Format string for displaying the two‑player score: Player 1 score : score Player 2 -->
+    <string name="player_score_format">Hráč 1 %1$d : %2$d Hráč 2</string>
+    <!-- Result messages for two‑player games -->
+    <string name="player1_win_message">Vyhrál hráč 1!</string>
+    <string name="player2_win_message">Vyhrál hráč 2!</string>
+
     <!-- Dialog title for choosing a language -->
     <string name="choose_language_title">Vyberte jazyk</string>
 </resources>

@@ -17,6 +17,17 @@
     <string name="lose_message">You lost!</string>
     <string name="draw_message">Draw!</string>
 
+    <!-- Start screen and two‑player mode strings -->
+    <string name="select_game_mode">Choose game mode</string>
+    <string name="single_player_game">Single player game</string>
+    <string name="two_player_game">Two players game</string>
+    <string name="player1_label">Player 1</string>
+    <string name="player2_label">Player 2</string>
+    <!-- Format string for displaying the two‑player score -->
+    <string name="player_score_format">Player 1 %1$d : %2$d Player 2</string>
+    <string name="player1_win_message">Player 1 wins!</string>
+    <string name="player2_win_message">Player 2 wins!</string>
+
     <!-- Dialog title for choosing a language -->
     <string name="choose_language_title">Choose language</string>
 </resources>
