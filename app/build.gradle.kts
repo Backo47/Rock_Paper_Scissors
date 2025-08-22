@@ -14,7 +14,7 @@ android {
         versionCode = 1
         // Version name follows semantic versioning MAJOR.MINOR.PATCH. The first
         // release of the game with multiplayer support is version 1.0.0.
-        versionName = "1.0.0"
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
