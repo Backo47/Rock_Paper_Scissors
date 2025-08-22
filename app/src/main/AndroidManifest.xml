@@ -30,6 +30,11 @@
             android:name=".TwoPlayerActivity"
             android:exported="true" />
 
+        <!-- About page providing author, version and release date info -->
+        <activity
+            android:name=".AboutActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

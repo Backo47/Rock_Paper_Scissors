@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Hamburger menu item; displays a simple menu icon. -->
+    <item
+        android:id="@+id/menu_hamburger"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/menu"
+        app:showAsAction="always" />
+
+</menu>

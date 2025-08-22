@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
 import java.util.Locale
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
     private lateinit var resultTextView: TextView
@@ -80,28 +81,49 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        // Set the menu title to current language code (uppercase)
-        val currentLanguage = Locale.getDefault().language
-        val code = when (currentLanguage) {
-            "cs" -> "CZ"
-            "en" -> "EN"
-            "sk" -> "SK"
-            else -> currentLanguage.uppercase()
-        }
-        menu.findItem(R.id.menu_language)?.title = code
+        // Inflate the new hamburger menu
+        menuInflater.inflate(R.menu.menu_game, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_language -> {
-                // Show dialog to select language
-                showLanguageDialog()
+            R.id.menu_hamburger -> {
+                showHamburgerMenu()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    /**
+     * Displays a hamburger menu offering navigation back to the mode selection
+     * screen, a language change option and an about page. Selecting an
+     * option performs the corresponding action.
+     */
+    private fun showHamburgerMenu() {
+        val options = arrayOf(
+            getString(R.string.menu_select_mode),
+            getString(R.string.menu_change_language),
+            getString(R.string.menu_about)
+        )
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.menu))
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        // Navigate back to the mode selection start screen
+                        val intent = Intent(this, StartActivity::class.java)
+                        // Clear the back stack so that pressing back from StartActivity
+                        // does not return here
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }
+                    1 -> showLanguageDialog()
+                    2 -> startActivity(Intent(this, AboutActivity::class.java))
+                }
+            }
+            .show()
     }
 
     /**

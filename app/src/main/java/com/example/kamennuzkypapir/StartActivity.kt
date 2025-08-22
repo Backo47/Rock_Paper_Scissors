@@ -37,23 +37,15 @@ class StartActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        // Show current language code in uppercase on the menu item
-        val currentLanguage = Locale.getDefault().language
-        val code = when (currentLanguage) {
-            "cs" -> "CZ"
-            "en" -> "EN"
-            "sk" -> "SK"
-            else -> currentLanguage.uppercase()
-        }
-        menu.findItem(R.id.menu_language)?.title = code
+        // Inflate the hamburger menu
+        menuInflater.inflate(R.menu.menu_game, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_language -> {
-                showLanguageDialog()
+            R.id.menu_hamburger -> {
+                showHamburgerMenu()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -61,9 +53,28 @@ class StartActivity : AppCompatActivity() {
     }
 
     /**
-     * Presents a simple dialog for choosing a language. When a language
-     * is selected the locale is updated and the activity is recreated
-     * so that the correct resources are loaded.
+     * Displays a menu with options specific to the start screen.
+     * Allows the user to change the language or view the About page.
+     */
+    private fun showHamburgerMenu() {
+        val options = arrayOf(
+            getString(R.string.menu_change_language),
+            getString(R.string.menu_about)
+        )
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.menu))
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> showLanguageDialog()
+                    1 -> startActivity(Intent(this, AboutActivity::class.java))
+                }
+            }
+            .show()
+    }
+
+    /**
+     * Presents a dialog for choosing a language. When a language is
+     * selected the locale is updated and the activity is recreated.
      */
     private fun showLanguageDialog() {
         val languages = arrayOf("CZ", "EN", "SK")

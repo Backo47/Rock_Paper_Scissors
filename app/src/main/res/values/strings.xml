@@ -40,6 +40,18 @@
     <string name="player1_win_message">Vyhrál hráč 1!</string>
     <string name="player2_win_message">Vyhrál hráč 2!</string>
 
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="menu_select_mode">Změnit mód hry</string>
+    <string name="menu_change_language">Změnit jazyk</string>
+    <string name="menu_about">O aplikaci</string>
+
+    <!-- About screen strings -->
+    <string name="about_title">O aplikaci</string>
+    <string name="about_author">Autor: Backo47</string>
+    <string name="about_version_format">Verze: %1$s</string>
+    <string name="about_date_format">Datum vydání: %1$s</string>
+
     <!-- Dialog title for choosing a language -->
     <string name="choose_language_title">Vyberte jazyk</string>
 </resources>

@@ -28,6 +28,18 @@
     <string name="player1_win_message">Player 1 wins!</string>
     <string name="player2_win_message">Player 2 wins!</string>
 
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="menu_select_mode">Change game mode</string>
+    <string name="menu_change_language">Change language</string>
+    <string name="menu_about">About</string>
+
+    <!-- About screen strings -->
+    <string name="about_title">About</string>
+    <string name="about_author">Author: Backo47</string>
+    <string name="about_version_format">Version: %1$s</string>
+    <string name="about_date_format">Release date: %1$s</string>
+
     <!-- Dialog title for choosing a language -->
     <string name="choose_language_title">Choose language</string>
 </resources>

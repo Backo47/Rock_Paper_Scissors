@@ -94,26 +94,46 @@ class TwoPlayerActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        val currentLanguage = Locale.getDefault().language
-        val code = when (currentLanguage) {
-            "cs" -> "CZ"
-            "en" -> "EN"
-            "sk" -> "SK"
-            else -> currentLanguage.uppercase()
-        }
-        menu.findItem(R.id.menu_language)?.title = code
+        // Inflate hamburger menu for two player mode
+        menuInflater.inflate(R.menu.menu_game, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menu_language -> {
-                showLanguageDialog()
+            R.id.menu_hamburger -> {
+                showHamburgerMenu()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    /**
+     * Displays a hamburger menu with options to change mode, change language
+     * or view the about page. Selecting an option performs the appropriate action.
+     */
+    private fun showHamburgerMenu() {
+        val options = arrayOf(
+            getString(R.string.menu_select_mode),
+            getString(R.string.menu_change_language),
+            getString(R.string.menu_about)
+        )
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.menu))
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        // Return to mode selection by starting StartActivity
+                        val intent = android.content.Intent(this, StartActivity::class.java)
+                        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+                    }
+                    1 -> showLanguageDialog()
+                    2 -> startActivity(android.content.Intent(this, AboutActivity::class.java))
+                }
+            }
+            .show()
     }
 
     /**
