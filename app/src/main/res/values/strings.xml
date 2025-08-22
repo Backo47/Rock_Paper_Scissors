@@ -30,4 +30,5 @@
 
     <!-- Dialog title for choosing a language -->
     <string name="choose_language_title">Vyberte jazyk</string>
+    <string name="cs">CS</string>
 </resources>
