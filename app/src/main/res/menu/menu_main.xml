@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Menu item for selecting language. The title will be updated programmatically to reflect the current language code. -->
+    <item
+        android:id="@+id/menu_language"
+        android:title="CS"
+        app:showAsAction="always" />
+</menu>

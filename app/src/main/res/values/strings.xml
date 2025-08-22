@@ -22,4 +22,12 @@
 
     <!-- Format string for displaying the score: Telefon score : score Hráč -->
     <string name="score_format">Telefon %1$d : %2$d Hráč</string>
+
+    <!-- Result messages -->
+    <string name="win_message">Vyhrál jsi!</string>
+    <string name="lose_message">Prohrál jsi!</string>
+    <string name="draw_message">Remíza!</string>
+
+    <!-- Dialog title for choosing a language -->
+    <string name="choose_language_title">Vyberte jazyk</string>
 </resources>

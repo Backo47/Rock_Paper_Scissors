@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Rock Paper Scissors</string>
+    <string name="vyberte_k_men_n_ky_nebo_pap_r">Choose rock, paper or scissors</string>
+    <string name="k_men">Rock</string>
+    <string name="pap_r">Paper</string>
+    <string name="n_ky">Scissors</string>
+    <string name="kamen_desc">Rock icon</string>
+    <string name="papir_desc">Paper icon</string>
+    <string name="nuzky_desc">Scissors icon</string>
+    <string name="computer_choice_icon_desc">Phone choice icon</string>
+    <string name="repeat_desc">Play again</string>
+    <string name="computer_label">Phone</string>
+    <string name="player_label">You</string>
+    <string name="player_choice_icon_desc">Player choice icon</string>
+    <string name="score_format">Phone %1$d : %2$d Player</string>
+    <string name="win_message">You won!</string>
+    <string name="lose_message">You lost!</string>
+    <string name="draw_message">Draw!</string>
+
+    <!-- Dialog title for choosing a language -->
+    <string name="choose_language_title">Choose language</string>
+</resources>

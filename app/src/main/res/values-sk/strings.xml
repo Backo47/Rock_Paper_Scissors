@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Kameň Papier Nožnice</string>
+    <string name="vyberte_k_men_n_ky_nebo_pap_r">Vyberte kameň, nožnice alebo papier</string>
+    <string name="k_men">Kameň</string>
+    <string name="pap_r">Papier</string>
+    <string name="n_ky">Nožnice</string>
+    <string name="kamen_desc">Ikona kameňa</string>
+    <string name="papir_desc">Ikona papiera</string>
+    <string name="nuzky_desc">Ikona nožníc</string>
+    <string name="computer_choice_icon_desc">Ikona voľby telefónu</string>
+    <string name="repeat_desc">Hrať znova</string>
+    <string name="computer_label">Telefón</string>
+    <string name="player_label">Ty</string>
+    <string name="player_choice_icon_desc">Ikona voľby hráča</string>
+    <string name="score_format">Telefón %1$d : %2$d Ty</string>
+    <string name="win_message">Vyhral si!</string>
+    <string name="lose_message">Prehral si!</string>
+    <string name="draw_message">Remíza!</string>
+
+    <!-- Dialog title for choosing a language -->
+    <string name="choose_language_title">Vyberte jazyk</string>
+</resources>

@@ -1,12 +1,16 @@
 package com.example.kamennuzkypapir
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var resultTextView: TextView
@@ -25,9 +29,20 @@ class MainActivity : AppCompatActivity() {
     private var computerScore: Int = 0
     private var playerScore: Int = 0
 
+    // Internal constants representing the choices. These are used for logic and are independent of locale.
+    private val ROCK = "rock"
+    private val PAPER = "paper"
+    private val SCISSORS = "scissors"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Restore scores if available (e.g. after configuration change)
+        if (savedInstanceState != null) {
+            computerScore = savedInstanceState.getInt("computerScore", 0)
+            playerScore = savedInstanceState.getInt("playerScore", 0)
+        }
 
         resultTextView = findViewById(R.id.result_text)
         // Scoreboard text view
@@ -46,15 +61,76 @@ class MainActivity : AppCompatActivity() {
         repeatButton = findViewById(R.id.repeat_button)
 
         // Set click listeners for player's choice
-        rockButton.setOnClickListener { playGame("Kámen") }
-        paperButton.setOnClickListener { playGame("Papír") }
-        scissorsButton.setOnClickListener { playGame("Nůžky") }
+        rockButton.setOnClickListener { playGame(ROCK) }
+        paperButton.setOnClickListener { playGame(PAPER) }
+        scissorsButton.setOnClickListener { playGame(SCISSORS) }
 
         // Set click listener for repeat button
         repeatButton.setOnClickListener { resetGame() }
 
         // Initialize scoreboard text
         updateScoreText()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // Save scores across configuration changes (e.g. language change)
+        outState.putInt("computerScore", computerScore)
+        outState.putInt("playerScore", playerScore)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        // Set the menu title to current language code (uppercase)
+        val currentLanguage = Locale.getDefault().language
+        val code = when (currentLanguage) {
+            "cs" -> "CZ"
+            "en" -> "EN"
+            "sk" -> "SK"
+            else -> currentLanguage.uppercase()
+        }
+        menu.findItem(R.id.menu_language)?.title = code
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_language -> {
+                // Show dialog to select language
+                showLanguageDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    /**
+     * Displays a dialog allowing the user to select a language. When a language
+     * is chosen the locale is updated and the activity is recreated.
+     */
+    private fun showLanguageDialog() {
+        val languages = arrayOf("CZ", "EN", "SK")
+        val codes = arrayOf("cs", "en", "sk")
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.choose_language_title))
+            .setItems(languages) { _, which ->
+                setLocale(codes[which])
+            }
+            .show()
+    }
+
+    /**
+     * Changes the app's locale to the given language code and recreates
+     * the activity so that resources reload.
+     */
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+        // Recreate activity to apply changes
+        recreate()
     }
 
     private fun playGame(userChoice: String) {
@@ -72,9 +148,9 @@ class MainActivity : AppCompatActivity() {
 
         // Set player's icon based on their choice and show it
         when (userChoice) {
-            "Kámen" -> playerIcon.setImageResource(R.drawable.rock)
-            "Papír" -> playerIcon.setImageResource(R.drawable.paper)
-            "Nůžky" -> playerIcon.setImageResource(R.drawable.scissors)
+            ROCK -> playerIcon.setImageResource(R.drawable.rock)
+            PAPER -> playerIcon.setImageResource(R.drawable.paper)
+            SCISSORS -> playerIcon.setImageResource(R.drawable.scissors)
         }
         playerIcon.visibility = View.VISIBLE
 
@@ -82,9 +158,9 @@ class MainActivity : AppCompatActivity() {
         val computerChoice = getComputerChoice()
         // Set computer's icon accordingly
         when (computerChoice) {
-            "Kámen" -> computerIcon.setImageResource(R.drawable.rock)
-            "Papír" -> computerIcon.setImageResource(R.drawable.paper)
-            "Nůžky" -> computerIcon.setImageResource(R.drawable.scissors)
+            ROCK -> computerIcon.setImageResource(R.drawable.rock)
+            PAPER -> computerIcon.setImageResource(R.drawable.paper)
+            SCISSORS -> computerIcon.setImageResource(R.drawable.scissors)
         }
         computerIcon.visibility = View.VISIBLE
 
@@ -105,21 +181,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getComputerChoice(): String {
-        val choices = listOf("Kámen", "Papír", "Nůžky")
+        val choices = listOf(ROCK, PAPER, SCISSORS)
         return choices[Random.nextInt(choices.size)]
     }
 
     private fun determineWinner(userChoice: String, computerChoice: String): String {
+        // Determine winner based on internal constants and return localized message
         return if (userChoice == computerChoice) {
-            "Remíza!"
+            getString(R.string.draw_message)
         } else if (
-            (userChoice == "Kámen" && computerChoice == "Nůžky") ||
-            (userChoice == "Papír" && computerChoice == "Kámen") ||
-            (userChoice == "Nůžky" && computerChoice == "Papír")
+            (userChoice == ROCK && computerChoice == SCISSORS) ||
+            (userChoice == PAPER && computerChoice == ROCK) ||
+            (userChoice == SCISSORS && computerChoice == PAPER)
         ) {
-            "Vyhrál jsi!"
+            getString(R.string.win_message)
         } else {
-            "Prohrál jsi!"
+            getString(R.string.lose_message)
         }
     }
 
