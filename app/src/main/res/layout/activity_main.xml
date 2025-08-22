@@ -10,7 +10,7 @@
         android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vyberte kámen, nůžky nebo papír"
+        android:text="@string/vyberte_k_men_n_ky_nebo_pap_r"
         android:textSize="24sp"
         android:gravity="center"
         android:paddingBottom="16dp" />
@@ -35,19 +35,19 @@
         android:id="@+id/rock_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kámen" />
+        android:text="@string/k_men" />
 
     <Button
         android:id="@+id/paper_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Papír"
+        android:text="@string/pap_r"
         android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/scissors_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nůžky"
+        android:text="@string/n_ky"
         android:layout_marginTop="8dp" />
 </LinearLayout>

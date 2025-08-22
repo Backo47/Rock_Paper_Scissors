@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kamen Nuzky Papir</string>
+    <string name="vyberte_k_men_n_ky_nebo_pap_r">Vyberte kámen, nůžky nebo papír</string>
+    <string name="k_men">Kámen</string>
+    <string name="pap_r">Papír</string>
+    <string name="n_ky">Nůžky</string>
 </resources>
