@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultTextView: TextView
     private lateinit var computerLabel: TextView
     private lateinit var playerLabel: TextView
+    private lateinit var scoreTextView: TextView
     private lateinit var rockButton: ImageButton
     private lateinit var paperButton: ImageButton
     private lateinit var scissorsButton: ImageButton
@@ -20,11 +21,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var choicesContainer: View
     private lateinit var repeatButton: ImageButton
 
+    // Scores for the computer (phone) and player. These persist until the app is restarted.
+    private var computerScore: Int = 0
+    private var playerScore: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         resultTextView = findViewById(R.id.result_text)
+        // Scoreboard text view
+        scoreTextView = findViewById(R.id.score_text)
         // Initialize labels and icons
         computerLabel = findViewById(R.id.computer_label)
         playerLabel = findViewById(R.id.player_label)
@@ -45,6 +52,9 @@ class MainActivity : AppCompatActivity() {
 
         // Set click listener for repeat button
         repeatButton.setOnClickListener { resetGame() }
+
+        // Initialize scoreboard text
+        updateScoreText()
     }
 
     private fun playGame(userChoice: String) {
@@ -79,7 +89,16 @@ class MainActivity : AppCompatActivity() {
         computerIcon.visibility = View.VISIBLE
 
         // Determine winner and display result
-        resultTextView.text = determineWinner(userChoice, computerChoice)
+        val result = determineWinner(userChoice, computerChoice)
+        resultTextView.text = result
+
+        // Update scores based on result
+        when (result) {
+            "Vyhrál jsi!" -> playerScore++
+            "Prohrál jsi!" -> computerScore++
+            // Remíza does not change scores
+        }
+        updateScoreText()
 
         // Show the repeat button to allow starting a new round
         repeatButton.visibility = View.VISIBLE
@@ -124,5 +143,16 @@ class MainActivity : AppCompatActivity() {
         repeatButton.visibility = View.GONE
         // Reset result text
         resultTextView.text = getString(R.string.vyberte_k_men_n_ky_nebo_pap_r)
+
+        // Do not reset scores; just refresh scoreboard
+        updateScoreText()
+    }
+
+    /**
+     * Updates the scoreboard text using the current computer and player scores.
+     */
+    private fun updateScoreText() {
+        val scoreString = getString(R.string.score_format, computerScore, playerScore)
+        scoreTextView.text = scoreString
     }
 }

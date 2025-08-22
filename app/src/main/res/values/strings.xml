@@ -19,4 +19,7 @@
     <string name="player_label">Ty</string>
     <!-- Content description for player's choice icon -->
     <string name="player_choice_icon_desc">Ikona volby hráče</string>
+
+    <!-- Format string for displaying the score: Telefon score : score Hráč -->
+    <string name="score_format">Telefon %1$d : %2$d Hráč</string>
 </resources>
