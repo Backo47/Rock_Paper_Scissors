@@ -13,4 +13,10 @@
     <string name="computer_choice_icon_desc">Ikona volby telefonu</string>
     <!-- Content description for repeat button -->
     <string name="repeat_desc">Opakovat hru</string>
+
+    <!-- Labels for result screen -->
+    <string name="computer_label">Telefon</string>
+    <string name="player_label">Ty</string>
+    <!-- Content description for player's choice icon -->
+    <string name="player_choice_icon_desc">Ikona volby hráče</string>
 </resources>

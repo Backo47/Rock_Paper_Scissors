@@ -1,91 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/result_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vyberte_k_men_n_ky_nebo_pap_r"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:paddingBottom="16dp" />
+    <!-- Content container that expands to fill available space and centers its children. -->
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/user_choice_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        android:paddingBottom="8dp" />
+        <!-- Result message -->
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vyberte_k_men_n_ky_nebo_pap_r"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
 
-    <TextView
-        android:id="@+id/computer_choice_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        android:paddingBottom="16dp" />
+        <!-- Computer label and icon -->
+        <TextView
+            android:id="@+id/computer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/computer_label"
+            android:textSize="20sp"
+            android:paddingTop="8dp"
+            android:visibility="gone" />
 
-    <!-- Icons instead of text buttons -->
-    <!-- Player choice icons -->
-    <ImageButton
-        android:id="@+id/rock_button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/rock"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/kamen_desc" />
+        <ImageView
+            android:id="@+id/computer_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:contentDescription="@string/computer_choice_icon_desc" />
 
-    <ImageButton
-        android:id="@+id/paper_button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/paper"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/papir_desc" />
+        <!-- Player label and icon -->
+        <TextView
+            android:id="@+id/player_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/player_label"
+            android:textSize="20sp"
+            android:paddingTop="12dp"
+            android:visibility="gone" />
 
-    <ImageButton
-        android:id="@+id/scissors_button"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/scissors"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_marginTop="8dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/nuzky_desc" />
+        <ImageView
+            android:id="@+id/player_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:contentDescription="@string/player_choice_icon_desc" />
 
-    <!-- Computer choice icon, hidden until a round is played -->
-    <ImageView
-        android:id="@+id/computer_icon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        android:contentDescription="@string/computer_choice_icon_desc" />
+        <!-- Choices container shown before selection -->
+        <LinearLayout
+            android:id="@+id/choices_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-    <!-- Repeat button shown after round completion -->
+            <ImageButton
+                android:id="@+id/rock_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/rock"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/kamen_desc" />
+
+            <ImageButton
+                android:id="@+id/paper_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/paper"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/papir_desc" />
+
+            <ImageButton
+                android:id="@+id/scissors_button"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/scissors"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/nuzky_desc" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Repeat button displayed after a round. Aligned to bottom by virtue of being after content_layout -->
     <ImageButton
         android:id="@+id/repeat_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:visibility="gone"
         android:src="@drawable/replay"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:tint="@null"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:contentDescription="@string/repeat_desc"
-        app:tint="@null" />
+        android:contentDescription="@string/repeat_desc" />
+
 </LinearLayout>
