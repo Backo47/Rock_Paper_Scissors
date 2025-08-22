@@ -31,23 +31,36 @@
         android:textSize="20sp"
         android:paddingBottom="16dp" />
 
-    <Button
+    <!-- Icons instead of text buttons -->
+    <ImageButton
         android:id="@+id/rock_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/k_men" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/rock"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/kamen_desc" />
 
-    <Button
+    <ImageButton
         android:id="@+id/paper_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pap_r"
-        android:layout_marginTop="8dp" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/paper"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/papir_desc" />
 
-    <Button
+    <ImageButton
         android:id="@+id/scissors_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/n_ky"
-        android:layout_marginTop="8dp" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/scissors"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/nuzky_desc" />
 </LinearLayout>

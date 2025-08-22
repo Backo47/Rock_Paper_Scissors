@@ -4,4 +4,8 @@
     <string name="k_men">Kámen</string>
     <string name="pap_r">Papír</string>
     <string name="n_ky">Nůžky</string>
+    <!-- Content descriptions for accessibility when using image buttons -->
+    <string name="kamen_desc">Ikona kamene</string>
+    <string name="papir_desc">Ikona papíru</string>
+    <string name="nuzky_desc">Ikona nůžek</string>
 </resources>

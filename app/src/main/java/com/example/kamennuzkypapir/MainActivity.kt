@@ -2,7 +2,7 @@ package com.example.kamennuzkypapir
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import kotlin.random.Random
 
@@ -19,9 +19,11 @@ class MainActivity : AppCompatActivity() {
         computerChoiceTextView = findViewById(R.id.computer_choice_text)
         userChoiceTextView = findViewById(R.id.user_choice_text)
 
-        val rockButton: Button = findViewById(R.id.rock_button)
-        val paperButton: Button = findViewById(R.id.paper_button)
-        val scissorsButton: Button = findViewById(R.id.scissors_button)
+        // Find image buttons instead of regular buttons. In the layout, the
+        // controls are now ImageButton, so casting them to Button will crash.
+        val rockButton: ImageButton = findViewById(R.id.rock_button)
+        val paperButton: ImageButton = findViewById(R.id.paper_button)
+        val scissorsButton: ImageButton = findViewById(R.id.scissors_button)
 
         rockButton.setOnClickListener { playGame("Kámen") }
         paperButton.setOnClickListener { playGame("Papír") }
