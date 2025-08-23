@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Kamen Nuzky Papir</string>
     <string name="vyberte_k_men_n_ky_nebo_pap_r">Vyberte symbol</string>
+
+    <!-- Generic prompt asking the user to choose a symbol.  This
+         replaces the older id with accents in the name and should
+         be used wherever a short instruction is needed. -->
+    <string name="choose_symbol">Vyberte symbol</string>
     <string name="k_men">Kámen</string>
     <string name="pap_r">Papír</string>
     <string name="n_ky">Nůžky</string>

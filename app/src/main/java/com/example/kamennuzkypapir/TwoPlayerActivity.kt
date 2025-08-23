@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Locale
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 
 /**
  * Activity implementing a two‑player version of Rock–Paper–Scissors. Two
@@ -170,7 +172,7 @@ class TwoPlayerActivity : AppCompatActivity() {
         scissorsButton.isEnabled = true
         // Set labels for current player
         turnLabel.text = if (playerNumber == 1) getString(R.string.player1_label) else getString(R.string.player2_label)
-        selectLabel.text = getString(R.string.vyberte_k_men_n_ky_nebo_pap_r)
+        selectLabel.text = getString(R.string.choose_symbol)
     }
 
     /**
@@ -245,6 +247,9 @@ class TwoPlayerActivity : AppCompatActivity() {
     private fun updateScoreText() {
         val scoreString = getString(R.string.player_score_format, player1Score, player2Score)
         scoreTextView.text = scoreString
+        // Show the two‑player score in the action bar subtitle to make it
+        // consistently visible at the top of the screen.
+        supportActionBar?.subtitle = scoreString
     }
 
     /**
@@ -268,11 +273,9 @@ class TwoPlayerActivity : AppCompatActivity() {
      * the activity so the new resources take effect.
      */
     private fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        // Apply locale changes using AppCompatDelegate
+        val localeList = LocaleListCompat.forLanguageTags(languageCode)
+        AppCompatDelegate.setApplicationLocales(localeList)
         recreate()
     }
 }

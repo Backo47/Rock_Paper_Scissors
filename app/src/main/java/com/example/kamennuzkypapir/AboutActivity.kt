@@ -9,6 +9,10 @@ import androidx.appcompat.app.AlertDialog
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.os.Build
+import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import android.content.Intent
 
 /**
@@ -28,8 +32,18 @@ class AboutActivity : AppCompatActivity() {
         // Retrieve versionName from package information rather than BuildConfig to avoid
         // unresolved reference errors. This uses the package manager to get the
         // current version name defined in the manifest.
-        val packageInfo = packageManager.getPackageInfo(packageName, 0)
-        val versionName = packageInfo.versionName ?: ""
+        // Retrieve the application version name using the appropriate API based on the OS level.
+        val versionName: String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val info = packageManager.getPackageInfo(
+                packageName,
+                PackageManager.PackageInfoFlags.of(0)
+            )
+            info.versionName ?: ""
+        } else {
+            @Suppress("DEPRECATION")
+            val info = packageManager.getPackageInfo(packageName, 0)
+            info.versionName ?: ""
+        }
         val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
         val dateString = dateFormat.format(Date())
         findViewById<TextView>(R.id.about_author).text = getString(R.string.about_author)
@@ -103,11 +117,10 @@ class AboutActivity : AppCompatActivity() {
      * strings and other resources update to the newly selected language.
      */
     private fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        // Use AppCompatDelegate to set application locales for modern Android versions
+        val localeList = LocaleListCompat.forLanguageTags(languageCode)
+        AppCompatDelegate.setApplicationLocales(localeList)
+        // Recreate the activity to apply changes to current UI
         recreate()
     }
 }

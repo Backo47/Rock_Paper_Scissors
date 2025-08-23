@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Ensure the scoreboard sits below the app bar in two‑player mode by adding
+     top padding equal to the action bar size. Otherwise, the top TextView
+     may overlap the bar and appear missing. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:paddingTop="?attr/actionBarSize">
 
-    <!-- Scoreboard at the top showing Player 1 : Player 2 scores -->
+    <!-- Scoreboard at the top showing Player 1 : Player 2 scores. Placed
+         outside of the main content layout so it appears beneath the action
+         bar with a margin. -->
     <TextView
         android:id="@+id/score_text_two"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="12dp"
+        android:gravity="center" />
 
     <!-- Content area that expands to fill available space and centers its children vertically -->
     <LinearLayout
@@ -48,7 +54,7 @@
                 android:id="@+id/select_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/vyberte_k_men_n_ky_nebo_pap_r"
+                android:text="@string/choose_symbol"
                 android:textSize="16sp"
                 android:layout_marginBottom="16dp" />
 

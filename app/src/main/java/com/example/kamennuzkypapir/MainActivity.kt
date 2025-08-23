@@ -11,6 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
 import java.util.Locale
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
@@ -146,11 +148,9 @@ class MainActivity : AppCompatActivity() {
      * the activity so that resources reload.
      */
     private fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        // Set the locale using AppCompatDelegate for proper support on modern Android versions
+        val localeList = LocaleListCompat.forLanguageTags(languageCode)
+        AppCompatDelegate.setApplicationLocales(localeList)
         // Recreate activity to apply changes
         recreate()
     }
@@ -246,8 +246,8 @@ class MainActivity : AppCompatActivity() {
         computerIcon.visibility = View.GONE
         playerIcon.visibility = View.GONE
         repeatButton.visibility = View.GONE
-        // Reset result text
-        resultTextView.text = getString(R.string.vyberte_k_men_n_ky_nebo_pap_r)
+        // Reset prompt asking the user to choose a symbol
+        resultTextView.text = getString(R.string.choose_symbol)
 
         // Do not reset scores; just refresh scoreboard
         updateScoreText()
@@ -259,5 +259,9 @@ class MainActivity : AppCompatActivity() {
     private fun updateScoreText() {
         val scoreString = getString(R.string.score_format, computerScore, playerScore)
         scoreTextView.text = scoreString
+        // Also display the current score in the action bar subtitle so that
+        // it remains visible even if the TextView is hidden or clipped. This
+        // ensures the score is always shown at the top of the screen.
+        supportActionBar?.subtitle = scoreString
     }
 }

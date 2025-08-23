@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Add top padding equal to the height of the app bar so that
+     the scoreboard is displayed below the purple action bar. Without
+     this padding the first TextView can overlap the action bar and
+     become invisible. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:paddingTop="?attr/actionBarSize">
 
-    <!-- Scoreboard at the top showing current scores. -->
+    <!-- Scoreboard at the top showing current scores. Located outside of the
+         content layout so it appears beneath the action bar with a margin. -->
     <TextView
         android:id="@+id/score_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/black"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textColor="@android:color/black" />
+        android:layout_marginBottom="12dp"
+        android:gravity="center" />
 
     <!-- Content container that expands to fill available space and centers its children. -->
     <LinearLayout
@@ -33,7 +38,7 @@
             android:id="@+id/result_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/vyberte_k_men_n_ky_nebo_pap_r"
+            android:text="@string/choose_symbol"
             android:textSize="24sp"
             android:gravity="center"
             android:paddingBottom="16dp" />
